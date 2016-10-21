@@ -3,10 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/"
         xmlns:local="clr-namespace:TplPlayground"
+        xmlns:core="clr-namespace:TplPlayground.Core;assembly=TplPlayground.Core"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="TPL Playground"
+        Width="640"
+        Height="480">
+    <Window.Resources>
+        <Style x:Key="buttonPanelStyle" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Background" Value="Beige" />
+            <Setter Property="DockPanel.Dock" Value="Top" />
+        </Style>
+
+        <Style x:Key="regionStyle" TargetType="ItemsControl">
+            <Setter Property="Padding" Value="5" />
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <StackPanel Style="{StaticResource buttonPanelStyle}">
+            <ItemsControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ButtonRegion}" Style="{StaticResource regionStyle}" />
+        </StackPanel>
+
+        <ItemsControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" Style="{StaticResource regionStyle}" />
+    </DockPanel>
 </Window>
