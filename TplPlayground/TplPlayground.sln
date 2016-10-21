@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TplPlayground", "TplPlaygro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TplPlayground.Core", "TplPlayground.Core\TplPlayground.Core.csproj", "{67D145D4-C23E-43FC-8518-A232AF6E3651}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TplPlayground.CommandFileProcessor", "TplPlayground.CommandFileProcessor\TplPlayground.CommandFileProcessor.csproj", "{CA28A20B-3104-45D8-B8A0-00D80CEB8953}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{BAC359A6-2DEC-4671-BF2B-59790517B316}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,15 @@ Global
 		{67D145D4-C23E-43FC-8518-A232AF6E3651}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67D145D4-C23E-43FC-8518-A232AF6E3651}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67D145D4-C23E-43FC-8518-A232AF6E3651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA28A20B-3104-45D8-B8A0-00D80CEB8953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA28A20B-3104-45D8-B8A0-00D80CEB8953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA28A20B-3104-45D8-B8A0-00D80CEB8953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA28A20B-3104-45D8-B8A0-00D80CEB8953}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CA28A20B-3104-45D8-B8A0-00D80CEB8953} = {BAC359A6-2DEC-4671-BF2B-59790517B316}
 	EndGlobalSection
 EndGlobal
