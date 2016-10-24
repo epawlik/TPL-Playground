@@ -1,15 +1,16 @@
-﻿<Window x:Class="TplPlayground.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:prism="http://prismlibrary.com/"
-        xmlns:local="clr-namespace:TplPlayground"
-        xmlns:core="clr-namespace:TplPlayground.Core;assembly=TplPlayground.Core"
-        mc:Ignorable="d"
-        Title="TPL Playground"
-        Width="640"
-        Height="480">
+﻿<metro:MetroWindow x:Class="TplPlayground.MainWindow"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:prism="http://prismlibrary.com/"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:local="clr-namespace:TplPlayground"
+                   xmlns:core="clr-namespace:TplPlayground.Core;assembly=TplPlayground.Core"
+                   mc:Ignorable="d"
+                   Title="TPL Playground"
+                   Width="640"
+                   Height="480">
     <Window.Resources>
         <Style x:Key="buttonPanelStyle" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal" />
@@ -29,4 +30,4 @@
 
         <ItemsControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" Style="{StaticResource regionStyle}" />
     </DockPanel>
-</Window>
+</metro:MetroWindow>

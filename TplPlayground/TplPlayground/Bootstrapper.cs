@@ -1,5 +1,7 @@
 ﻿using Prism.Mef;
 using System.ComponentModel.Composition.Hosting;
+using System.ComponentModel.Composition.Registration;
+using System.IO.Abstractions;
 using System.Windows;
 
 namespace TplPlayground
@@ -22,7 +24,13 @@ namespace TplPlayground
 
             // Add this assembly
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Bootstrapper).Assembly));
+            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Core.RegionNames).Assembly));
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(CommandFileProcessor.CommandFileProcessorModule).Assembly));
+
+            // set up the exports for external dependencies
+            var builder = new RegistrationBuilder();
+            builder.ForType<FileSystem>().Export<IFileSystem>();
+            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(IFileSystem).Assembly, builder));
         }
     }
 }

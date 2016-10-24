@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Composition;
 using System.Windows.Controls;
+using TplPlayground.CommandFileProcessor.ViewModel;
 
 namespace TplPlayground.CommandFileProcessor.View
 {
@@ -11,9 +12,11 @@ namespace TplPlayground.CommandFileProcessor.View
     {
         internal const string ContractName = "TplPlayground.CommandFileProcessor.View.MainContent";
         
-        public MainContent()
+        [ImportingConstructor]
+        public MainContent(MainContentViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }
