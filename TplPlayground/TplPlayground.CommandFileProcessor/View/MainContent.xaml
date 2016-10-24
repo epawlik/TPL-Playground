@@ -23,6 +23,8 @@
         </Grid>
         
         <Grid>
+            <Button Command="{Binding RunProcessCommand, Mode=OneTime}"
+                    Content="Run Process" />
             <metro:ProgressRing IsActive="{Binding IsBusy}" />
         </Grid>
     </DockPanel>

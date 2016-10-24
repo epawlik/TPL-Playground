@@ -92,6 +92,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandFileProcessorModule.cs" />
+    <Compile Include="Dataflow.cs" />
+    <Compile Include="Model\CommandSection.cs" />
+    <Compile Include="Model\FileSection.cs" />
+    <Compile Include="Model\HeaderSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
