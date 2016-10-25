@@ -3,6 +3,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Registration;
 using System.IO.Abstractions;
 using System.Windows;
+using Prism.Logging;
 
 namespace TplPlayground
 {
@@ -31,6 +32,11 @@ namespace TplPlayground
             var builder = new RegistrationBuilder();
             builder.ForType<FileSystem>().Export<IFileSystem>();
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(IFileSystem).Assembly, builder));
+        }
+
+        protected override ILoggerFacade CreateLogger()
+        {
+            return new Core.Logging.EventPublishingLogger(base.CreateLogger());
         }
     }
 }
