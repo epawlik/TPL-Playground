@@ -1,4 +1,5 @@
 ﻿using Prism.Logging;
+using System;
 
 namespace TplPlayground.Core.Logging
 {
@@ -9,6 +10,7 @@ namespace TplPlayground.Core.Logging
             this.Message = message;
             this.Category = category;
             this.Priority = priority;
+            this.Time = DateTime.Now.TimeOfDay;
         }
 
         public Category Category { get; }
@@ -16,5 +18,7 @@ namespace TplPlayground.Core.Logging
         public string Message { get; }
 
         public Priority Priority { get; }
+
+        public TimeSpan Time { get; }
     }
 }

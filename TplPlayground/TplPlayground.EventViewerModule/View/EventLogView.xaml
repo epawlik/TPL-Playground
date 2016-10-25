@@ -31,18 +31,22 @@
         <DataTemplate DataType="{x:Type core:LogMessage}">
             <Grid IsSharedSizeScope="True">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition SharedSizeGroup="Index" Width="Auto"/>
-                    <ColumnDefinition SharedSizeGroup="Date" Width="Auto"/>
+                    <ColumnDefinition SharedSizeGroup="Time" Width="Auto"/>
+                    <ColumnDefinition SharedSizeGroup="Category" Width="Auto"/>
+                    <ColumnDefinition SharedSizeGroup="Priority" Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
-                <TextBlock Text="{Binding Category}" Grid.Column="0"
+                
+                <TextBlock Text="{Binding Time}" Grid.Column="0"
                        FontWeight="Bold" Margin="5,0,5,0"/>
 
-                <TextBlock Text="{Binding Priority}" Grid.Column="1"
+                <TextBlock Text="{Binding Category}" Grid.Column="1"
+                       FontWeight="Bold" Margin="5,0,5,0"/>
+
+                <TextBlock Text="{Binding Priority}" Grid.Column="2"
                        FontWeight="Bold" Margin="0,0,2,0" />
 
-                <TextBlock Text="{Binding Message}" Grid.Column="2"
+                <TextBlock Text="{Binding Message}" Grid.Column="3"
                        TextWrapping="Wrap"/>
             </Grid>
         </DataTemplate>
