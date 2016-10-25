@@ -28,6 +28,8 @@
             <ItemsControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ButtonRegion}" Style="{StaticResource regionStyle}" />
         </StackPanel>
 
+        <ContentControl DockPanel.Dock="Bottom" prism:RegionManager.RegionName="{x:Static core:RegionNames.LogRegion}" MaxHeight="150" />
+
         <ItemsControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" Style="{StaticResource regionStyle}" />
     </DockPanel>
 </metro:MetroWindow>

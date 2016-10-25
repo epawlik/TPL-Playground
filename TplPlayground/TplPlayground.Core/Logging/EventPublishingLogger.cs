@@ -8,13 +8,13 @@ namespace TplPlayground.Core.Logging
     {
         private readonly ILoggerFacade _wrappedLogger;
 
-        [Import(typeof(IEventAggregator))]
-        private IEventAggregator EventAggregator { get; set; }
-
         public EventPublishingLogger(ILoggerFacade wrappedLoggerFacade)
         {
             this._wrappedLogger = wrappedLoggerFacade;
         }
+
+        [Import(typeof(IEventAggregator))]
+        private IEventAggregator EventAggregator { get; set; }
 
         public void Log(string message, Category category, Priority priority)
         {

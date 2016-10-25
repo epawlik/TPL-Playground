@@ -1,5 +1,6 @@
 ﻿using NullGuard;
 using Prism.Commands;
+using Prism.Logging;
 using System.ComponentModel.Composition;
 using System.IO.Abstractions;
 using System.Threading.Tasks;
@@ -16,13 +17,16 @@ namespace TplPlayground.CommandFileProcessor.ViewModel
         private readonly ExportFactory<Dataflow> _dataFlowFactory;
         private readonly IFileSystem _fileSystem;
         private readonly IFolderBrowserDialog _folderBrowserDialog;
+        private readonly ILoggerFacade _logger;
 
         [ImportingConstructor]
         public MainContentViewModel(
+            ILoggerFacade logger,
             IFileSystem fileSystem,
             IFolderBrowserDialog folderBrowserDialog,
             ExportFactory<Dataflow> dataFlowFactory)
         {
+            this._logger = logger;
             this._fileSystem = fileSystem;
             this._folderBrowserDialog = folderBrowserDialog;
             this._dataFlowFactory = dataFlowFactory;
@@ -57,6 +61,7 @@ namespace TplPlayground.CommandFileProcessor.ViewModel
         private async Task RunProcessAsync()
         {
             IsBusy = true;
+            _logger.Log("Beginning process.", Category.Info, Priority.None);
 
             using (var flow = _dataFlowFactory.CreateExport())
             {
@@ -72,6 +77,7 @@ namespace TplPlayground.CommandFileProcessor.ViewModel
                 await flow.Value.Completion;
             }
 
+            _logger.Log("Ending process.", Category.Info, Priority.None);
             IsBusy = false;
         }
 

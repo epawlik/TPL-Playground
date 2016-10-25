@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
@@ -14,10 +15,14 @@ namespace TplPlayground.CommandFileProcessor
     public class Dataflow : IDataflowBlock
     {
         private readonly ExportFactory<IFileSystem> _fileSystemFactory;
+        private readonly ILoggerFacade _logger;
 
         [ImportingConstructor]
-        public Dataflow(ExportFactory<IFileSystem> fileSystemFactory)
+        public Dataflow(
+            ExportFactory<IFileSystem> fileSystemFactory,
+            ILoggerFacade logger)
         {
+            this._logger = logger;
             this._fileSystemFactory = fileSystemFactory;
 
             var parallelBlockOptions = new ExecutionDataflowBlockOptions
@@ -72,8 +77,13 @@ namespace TplPlayground.CommandFileProcessor
             // TODO:...
         }
 
-        private static void DebugCompletion(IDataflowBlock block, string name) =>
-            block.Completion.ContinueWith(_ => Debug.WriteLine($"Completed Task: {name}", ConsoleColor.Cyan));
+        private void DebugCompletion(IDataflowBlock block, string name) =>
+            block.Completion.ContinueWith(_ =>
+            {
+                var msg = $"Completed Task: {name}";
+                Debug.WriteLine(msg, ConsoleColor.Cyan);
+                _logger.Log(msg, Category.Info, Priority.None);
+            });
 
         private static void PrintResults(FileSection section) =>
             Debug.WriteLine(section.ToString());
@@ -85,6 +95,7 @@ namespace TplPlayground.CommandFileProcessor
                 string message = $"Splitting paragraphs: {fileSystem.Value.Path.GetFileName(fileInfo.Item1)}";
                 const string commandStart = "---- CMD:";
                 Debug.WriteLine(message);
+                _logger.Log(message, Category.Info, Priority.None);
 
                 var headerSection = new HeaderSection(
                     fileInfo.Item1,
@@ -108,7 +119,11 @@ namespace TplPlayground.CommandFileProcessor
 
                 var result = paragraphs.Select((paragraph, index) =>
                     new CommandSection(fileInfo.Item1, index + 1, paragraph.First().Substring(commandStart.Length).Trim(), paragraph)).ToList();
-                Debug.WriteLine($"Completed {char.ToLowerInvariant(message[0]) + message.Substring(1)}");
+
+                string completeMessage = $"Completed {char.ToLowerInvariant(message[0]) + message.Substring(1)}";
+                Debug.WriteLine(completeMessage);
+                _logger.Log(completeMessage, Category.Info, Priority.None);
+
                 return new FileSection[] { headerSection }.Concat(result);
             }
         }
@@ -117,6 +132,7 @@ namespace TplPlayground.CommandFileProcessor
         {
             using (var fileSystem = _fileSystemFactory.CreateExport())
             {
+                _logger.Log($"Reading file: {filePath}", Category.Info, Priority.None);
                 var lines = fileSystem.Value.File.ReadAllLines(filePath);
                 Debug.WriteLine(filePath + Environment.NewLine + string.Join(Environment.NewLine, lines));
                 return Tuple.Create(filePath, lines);
