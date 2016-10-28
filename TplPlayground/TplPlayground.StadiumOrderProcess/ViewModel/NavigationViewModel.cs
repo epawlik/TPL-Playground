@@ -3,7 +3,7 @@ using System.ComponentModel.Composition;
 using TplPlayground.Core;
 using TplPlayground.Core.Mvvm;
 
-namespace TplPlayground.CommandFileProcessor.ViewModel
+namespace TplPlayground.StadiumOrderProcess.ViewModel
 {
     [Export(typeof(NavigationViewModel))]
     public class NavigationViewModel : NavigationViewModelBase

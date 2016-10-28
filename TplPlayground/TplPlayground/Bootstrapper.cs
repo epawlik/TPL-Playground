@@ -17,8 +17,9 @@ namespace TplPlayground
             // Add this assembly
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Bootstrapper).Assembly));
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Core.RegionNames).Assembly));
-            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(CommandFileProcessor.CommandFileProcessorModule).Assembly));
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(EventViewerModule.EventViewerModule).Assembly));
+            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(CommandFileProcessor.CommandFileProcessorModule).Assembly));
+            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(StadiumOrderProcess.StadiumOrderProcessModule).Assembly));
 
             // set up the exports for external dependencies
             var builder = new RegistrationBuilder();

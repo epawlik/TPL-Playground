@@ -3,20 +3,20 @@ using Prism.Mef.Modularity;
 using Prism.Modularity;
 using Prism.Regions;
 using System.ComponentModel.Composition;
-using TplPlayground.CommandFileProcessor.View;
 using TplPlayground.Core;
 using TplPlayground.Core.Mvvm;
+using TplPlayground.StadiumOrderProcess.View;
 
-namespace TplPlayground.CommandFileProcessor
+namespace TplPlayground.StadiumOrderProcess
 {
-    [ModuleExport(typeof(CommandFileProcessorModule))]
-    public class CommandFileProcessorModule : IModule
+    [ModuleExport(typeof(StadiumOrderProcessModule))]
+    public class StadiumOrderProcessModule : IModule
     {
         private readonly IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
 
         [ImportingConstructor]
-        public CommandFileProcessorModule(IRegionManager regionManager, IEventAggregator eventAggregator)
+        public StadiumOrderProcessModule(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             this._regionManager = regionManager;
             this._eventAggregator = eventAggregator;
