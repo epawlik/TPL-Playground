@@ -85,8 +85,11 @@ namespace TplPlayground.CommandFileProcessor
                 _logger.Log(msg, Category.Info, Priority.None);
             });
 
-        private static void PrintResults(FileSection section) =>
+        private void PrintResults(FileSection section)
+        {
             Debug.WriteLine(section.ToString());
+            _logger.Log(section.ToString(), Category.Info, Priority.None);
+        }
 
         private IEnumerable<FileSection> BreakIntoSections(Tuple<string, string[]> fileInfo)
         {
@@ -103,7 +106,7 @@ namespace TplPlayground.CommandFileProcessor
                     fileInfo.Item2.TakeWhile(line => !line.StartsWith(commandStart)));
 
                 var paragraphs = fileInfo.Item2
-                    .SkipWhile(line => !line.StartsWith(commandStart))
+                    .Skip(headerSection.Lines.Count())
                     .Aggregate(
                         new List<List<string>>(),
                         (list, value) =>
