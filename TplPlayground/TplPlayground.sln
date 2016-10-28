@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TplPlayground.CommandFilePr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{BAC359A6-2DEC-4671-BF2B-59790517B316}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TplPlayground.EventViewerModule", "TplPlayground.EventViewerModule\TplPlayground.EventViewerModule.csproj", "{B3262F86-4F3A-41F0-9279-B2CD3416E06A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,11 +31,16 @@ Global
 		{CA28A20B-3104-45D8-B8A0-00D80CEB8953}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA28A20B-3104-45D8-B8A0-00D80CEB8953}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA28A20B-3104-45D8-B8A0-00D80CEB8953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3262F86-4F3A-41F0-9279-B2CD3416E06A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3262F86-4F3A-41F0-9279-B2CD3416E06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3262F86-4F3A-41F0-9279-B2CD3416E06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3262F86-4F3A-41F0-9279-B2CD3416E06A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CA28A20B-3104-45D8-B8A0-00D80CEB8953} = {BAC359A6-2DEC-4671-BF2B-59790517B316}
+		{B3262F86-4F3A-41F0-9279-B2CD3416E06A} = {BAC359A6-2DEC-4671-BF2B-59790517B316}
 	EndGlobalSection
 EndGlobal

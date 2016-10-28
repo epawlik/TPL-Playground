@@ -21,7 +21,6 @@ namespace TplPlayground.CommandFileProcessor.ViewModel
         public ICommand NavigateCommand
         {
             get;
-            private set;
         }
 
         private static bool CanNavigate() => true;

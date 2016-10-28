@@ -4,11 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:local="clr-namespace:TplPlayground.CommandFileProcessor.View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-             prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
-        <TextBlock Text="Main Content Here..." />
-    </Grid>
+             d:DesignHeight="300" d:DesignWidth="300">
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{Binding FolderPath, StringFormat='Folder Path: {0}'}"
+                       VerticalAlignment="Center" />
+            <Button Grid.Column="1"
+                    Command="{Binding SelectFolderCommand, Mode=OneTime}"
+                    Content="Select Folder" />
+        </Grid>
+        
+        <Grid>
+            <Button Command="{Binding RunProcessCommand, Mode=OneTime}"
+                    Content="Run Process" />
+            <metro:ProgressRing IsActive="{Binding IsBusy}" />
+        </Grid>
+    </DockPanel>
 </UserControl>
