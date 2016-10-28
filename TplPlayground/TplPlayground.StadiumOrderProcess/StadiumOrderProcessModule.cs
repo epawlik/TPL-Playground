@@ -4,8 +4,8 @@ using Prism.Modularity;
 using Prism.Regions;
 using System.ComponentModel.Composition;
 using TplPlayground.Core;
-using TplPlayground.Core.Mvvm;
 using TplPlayground.StadiumOrderProcess.View;
+using TplPlayground.StadiumOrderProcess.ViewModel;
 
 namespace TplPlayground.StadiumOrderProcess
 {
@@ -26,7 +26,7 @@ namespace TplPlayground.StadiumOrderProcess
         {
             // add views to regions
             this._regionManager.RegisterViewWithRegion(RegionNames.ButtonRegion, typeof(NavigationButton));
-            this._eventAggregator.GetEvent<NavigationEvent>().Subscribe(NavigateTo);
+            this._eventAggregator.GetEvent<StadiumOrderNavigationEvent>().Subscribe(NavigateTo);
         }
 
         private void NavigateTo(string regionName) =>

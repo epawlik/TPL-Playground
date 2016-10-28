@@ -4,8 +4,8 @@ using Prism.Modularity;
 using Prism.Regions;
 using System.ComponentModel.Composition;
 using TplPlayground.CommandFileProcessor.View;
+using TplPlayground.CommandFileProcessor.ViewModel;
 using TplPlayground.Core;
-using TplPlayground.Core.Mvvm;
 
 namespace TplPlayground.CommandFileProcessor
 {
@@ -26,7 +26,7 @@ namespace TplPlayground.CommandFileProcessor
         {
             // add views to regions
             this._regionManager.RegisterViewWithRegion(RegionNames.ButtonRegion, typeof(NavigationButton));
-            this._eventAggregator.GetEvent<NavigationEvent>().Subscribe(NavigateTo);
+            this._eventAggregator.GetEvent<CommandFileNavigationEvent>().Subscribe(NavigateTo);
         }
 
         private void NavigateTo(string regionName) =>

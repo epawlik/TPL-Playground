@@ -14,6 +14,10 @@ namespace TplPlayground.CommandFileProcessor.ViewModel
         }
 
         protected override void OnNavigate() =>
-            this.EventAggregator.GetEvent<NavigationEvent>().Publish(RegionNames.ContentRegion);
+            this.EventAggregator.GetEvent<CommandFileNavigationEvent>().Publish(RegionNames.ContentRegion);
+    }
+
+    public class CommandFileNavigationEvent : NavigationEvent
+    {
     }
 }

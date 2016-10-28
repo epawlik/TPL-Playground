@@ -15,7 +15,6 @@
         <Style x:Key="buttonPanelStyle" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal" />
             <Setter Property="Background" Value="Beige" />
-            <Setter Property="DockPanel.Dock" Value="Top" />
         </Style>
 
         <Style x:Key="regionStyle" TargetType="ItemsControl">
@@ -24,12 +23,16 @@
     </Window.Resources>
 
     <DockPanel>
-        <StackPanel Style="{StaticResource buttonPanelStyle}">
-            <ItemsControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ButtonRegion}" Style="{StaticResource regionStyle}" />
-        </StackPanel>
+        <ItemsControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ButtonRegion}" Style="{StaticResource regionStyle}" DockPanel.Dock="Top">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Style="{StaticResource buttonPanelStyle}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
 
         <ContentControl DockPanel.Dock="Bottom" prism:RegionManager.RegionName="{x:Static core:RegionNames.LogRegion}" MaxHeight="150" />
 
-        <ItemsControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" Style="{StaticResource regionStyle}" />
+        <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
     </DockPanel>
 </metro:MetroWindow>

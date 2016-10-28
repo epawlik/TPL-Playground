@@ -14,6 +14,10 @@ namespace TplPlayground.StadiumOrderProcess.ViewModel
         }
 
         protected override void OnNavigate() =>
-            this.EventAggregator.GetEvent<NavigationEvent>().Publish(RegionNames.ContentRegion);
+            this.EventAggregator.GetEvent<StadiumOrderNavigationEvent>().Publish(RegionNames.ContentRegion);
+    }
+
+    public class StadiumOrderNavigationEvent : NavigationEvent
+    {
     }
 }
